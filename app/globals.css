@@ -43,8 +43,8 @@ ul { list-style: none; }
 
 .avatar-wrap {
   position: relative;
-  width: 112px;
-  height: 112px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto;
 }
 .avatar-ring {
@@ -109,8 +109,8 @@ ul { list-style: none; }
 
 .profile h1 {
   margin-top: 10px;
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-family: var(--font-name), Georgia, serif;
+  font-weight: 700;
   font-size: 54px;
   line-height: 1;
   letter-spacing: -1px;

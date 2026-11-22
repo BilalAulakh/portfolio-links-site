@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { DM_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Sans, Instrument_Serif, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { profile } from "./data";
 
@@ -11,6 +11,8 @@ const serif = Instrument_Serif({
   style: ["normal", "italic"],
   variable: "--font-serif",
 });
+// Font for the profile name
+const nameFont = Playfair_Display({ subsets: ["latin"], weight: "700", variable: "--font-name" });
 
 export const metadata: Metadata = {
   title: `${profile.name} | Links`,
@@ -26,7 +28,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${nameFont.variable}`}>
       <body>{children}</body>
     </html>
   );

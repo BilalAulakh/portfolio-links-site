@@ -7,7 +7,9 @@ export type SocialType =
   | "tiktok"
   | "youtube"
   | "snapchat"
-  | "email";
+  | "email"
+  | "channel"
+  | "register";
 export type BrandKey = "signals" | "exness" | "instagram" | "facebook" | "tiktok" | "youtube" | "whatsapp";
 
 export interface Profile {
@@ -23,6 +25,8 @@ export interface Profile {
 export interface Social {
   type: SocialType;
   href: string;
+  /** Tooltip / screen-reader text (defaults to the type) */
+  label?: string;
 }
 
 export interface Highlight {
@@ -46,11 +50,11 @@ export interface LinkItem {
 const SITE = "https://www.asianfxsignals.com";
 
 export const profile: Profile = {
-  name: "Baba Btc",
+  name: "BABA BTC",
   avatar: "/avatar.jpg",
   logo: "/logo-mark.png",
   bio: "Trader | Traveller | Lifestyle",
-  tagline: "Gold, Forex & Crypto signals — delivered live.",
+  tagline: "Gold, Forex & Crypto signals delivered live.",
   website: SITE,
 };
 
@@ -59,20 +63,20 @@ export const profile: Profile = {
 
 // Small icon row
 export const socials: Social[] = [
-  { type: "instagram", href: "https://www.instagram.com/fx_asians" },
-  { type: "facebook", href: "https://www.facebook.com/share/1FG31rJR5R/" },
-  { type: "whatsapp", href: "https://wa.me/" },
-  { type: "tiktok", href: "https://tiktok.com/" },
-  { type: "youtube", href: "https://youtube.com/@rebel_tradess" },
-  { type: "email", href: "mailto:info@asianfxsignals.com" },
+  // { type: "instagram", href: "https://www.instagram.com/fx_asians" },
+  // { type: "facebook", href: "https://www.facebook.com/share/1FG31rJR5R/" },
+  { type: "channel", href: "https://whatsapp.com/channel/0029VbBWid2A89MZMwUPKY3E", label: "WhatsApp channel for Signals" },
+  { type: "whatsapp", href: "https://wa.me/923081339928", label: "WhatsApp chat support" },
+  { type: "register", href: "https://www.asianfxsignals.com/register", label: "Influencer - register" },
 ];
 
 // Big link buttons
 export const links: LinkItem[] = [
-  { title: "WhatsApp channel for Signals", subtitle: "Daily setups & live alerts", href: "https://whatsapp.com/channel/", thumb: "/car.jpg", fallback: "whatsapp", featured: true },
-  { title: "Exness partner link", subtitle: "Open your trading account", href: "https://www.exness.com/", thumb: "exness" },
-  { title: "Instagram", subtitle: "@fx_asians", href: "https://www.instagram.com/fx_asians", thumb: "instagram" },
-  { title: "Facebook", subtitle: "Community & updates", href: "https://www.facebook.com/share/1FG31rJR5R/", thumb: "facebook" },
-  { title: "TikTok", subtitle: "Short trading clips", href: "https://tiktok.com/", thumb: "tiktok" },
-  { title: "YouTube", subtitle: "@rebel_tradess · Full breakdowns", href: "https://youtube.com/@rebel_tradess", thumb: "youtube" },
+  { title: "WhatsApp channel for Signals", subtitle: "Daily setups & live alerts", href: "https://whatsapp.com/channel/0029VbBWid2A89MZMwUPKY3E", thumb: "/car.jpg", fallback: "whatsapp", featured: true },
+  { title: "WhatsApp chat support", subtitle: "Message us directly", href: "https://wa.me/923081339928", thumb: "whatsapp" },
+  { title: "Influencer", subtitle: "Asian FX Signals", href: "https://www.asianfxsignals.com/register", thumb: "/logo-mark.png", fallback: "signals" },
+  // { title: "Instagram", subtitle: "", href: "https://www.instagram.com/fx_asians", thumb: "instagram" },
+  // { title: "Facebook", subtitle: "", href: "https://www.facebook.com/share/1FG31rJR5R/", thumb: "facebook" },
+  // { title: "TikTok", subtitle: "", href: "https://tiktok.com/", thumb: "tiktok" },
+  // { title: "YouTube",  href: "https://youtube.com/@rebel_tradess", thumb: "youtube" },
 ];

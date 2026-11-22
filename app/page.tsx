@@ -7,8 +7,9 @@ import {
   FaTiktok,
   FaYoutube,
   FaSnapchatGhost,
+  FaBullhorn,
 } from "react-icons/fa";
-import { FiArrowUpRight, FiMail } from "react-icons/fi";
+import { FiArrowUpRight, FiMail, FiUserPlus } from "react-icons/fi";
 import { profile, socials, links, type SocialType } from "./data";
 import Avatar from "@/components/Avatar";
 import Thumb from "@/components/Thumb";
@@ -21,6 +22,8 @@ const socialIcons: Record<SocialType, IconType> = {
   youtube: FaYoutube,
   snapchat: FaSnapchatGhost,
   email: FiMail,
+  channel: FaBullhorn,
+  register: FiUserPlus,
 };
 
 // Used for the staggered fade-in
@@ -43,10 +46,10 @@ export default function Home() {
        
 
         <nav className="socials">
-          {socials.map(({ type, href }) => {
+          {socials.map(({ type, href, label = type }) => {
             const Icon = socialIcons[type];
             return (
-              <a key={type} href={href} target="_blank" rel="noopener noreferrer" aria-label={type}>
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
                 <Icon />
               </a>
             );

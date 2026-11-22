@@ -3,16 +3,23 @@ import { useState } from "react";
 
 interface AvatarProps {
   src: string;
+  /** Used when `src` is missing */
+  fallbackSrc: string;
   name: string;
 }
 
-export default function Avatar({ src, name }: AvatarProps) {
+export default function Avatar({ src, fallbackSrc, name }: AvatarProps) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
-    const initials = name.split(" ").map((w) => w[0]).join("").slice(0, 2);
-    return <div className="avatar avatar-fallback">{initials}</div>;
-  }
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img className="avatar" src={src} alt={name} onError={() => setFailed(true)} />;
+  return (
+    <div className="avatar-ring">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className={`avatar${failed ? " avatar-logo" : ""}`}
+        src={failed ? fallbackSrc : src}
+        alt={name}
+        onError={() => setFailed(true)}
+      />
+    </div>
+  );
 }

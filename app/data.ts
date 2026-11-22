@@ -73,7 +73,6 @@ export const socials: Social[] = [
 
 // Big link buttons
 export const links: LinkItem[] = [
-  { title: "Get Live Signals", subtitle: "Entry · TP · SL — on your dashboard", href: `${SITE}/register`, thumb: "signals", featured: true },
   { title: "WhatsApp channel for Signals", subtitle: "Daily setups & live alerts", href: "https://whatsapp.com/channel/", thumb: "/car.jpg", fallback: "whatsapp" },
   { title: "Exness partner link", subtitle: "Open your trading account", href: "https://www.exness.com/", thumb: "exness" },
   { title: "Instagram", subtitle: "@fx_asians", href: "https://www.instagram.com/fx_asians", thumb: "instagram" },

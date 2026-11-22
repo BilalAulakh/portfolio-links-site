@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useImageFailed } from "./useImageFailed";
 import { FaInstagram, FaFacebookF, FaTiktok, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { FiTrendingUp } from "react-icons/fi";
 import type { BrandKey, LinkItem } from "@/app/data";
@@ -27,12 +27,12 @@ function Brand({ name }: { name?: BrandKey }) {
 type ThumbProps = Pick<LinkItem, "thumb" | "fallback">;
 
 export default function Thumb({ thumb, fallback }: ThumbProps) {
-  const [failed, setFailed] = useState(false);
+  const { ref, failed, onError } = useImageFailed(thumb);
   const isImage = thumb.startsWith("/");
 
   if (isImage && !failed) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img className="thumb thumb-img" src={thumb} alt="" onError={() => setFailed(true)} />;
+    return <img ref={ref} className="thumb thumb-img" src={thumb} alt="" onError={onError} />;
   }
   return <Brand name={isImage ? fallback : (thumb as BrandKey)} />;
 }

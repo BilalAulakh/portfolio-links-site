@@ -46,7 +46,7 @@ export interface LinkItem {
 const SITE = "https://www.asianfxsignals.com";
 
 export const profile: Profile = {
-  name: "Asian Fx",
+  name: "Baba Btc",
   avatar: "/avatar.jpg",
   logo: "/logo-mark.png",
   bio: "Trader | Traveller | Lifestyle",
@@ -55,11 +55,7 @@ export const profile: Profile = {
 };
 
 // Small stats row under the name (same offer as the website)
-export const highlights: Highlight[] = [
-  { value: "$1", label: "per signal" },
-  { value: "$10", label: "min deposit" },
-  { value: "SL", label: "next one free" },
-];
+
 
 // Small icon row
 export const socials: Social[] = [
@@ -73,7 +69,7 @@ export const socials: Social[] = [
 
 // Big link buttons
 export const links: LinkItem[] = [
-  { title: "WhatsApp channel for Signals", subtitle: "Daily setups & live alerts", href: "https://whatsapp.com/channel/", thumb: "/car.jpg", fallback: "whatsapp" },
+  { title: "WhatsApp channel for Signals", subtitle: "Daily setups & live alerts", href: "https://whatsapp.com/channel/", thumb: "/car.jpg", fallback: "whatsapp", featured: true },
   { title: "Exness partner link", subtitle: "Open your trading account", href: "https://www.exness.com/", thumb: "exness" },
   { title: "Instagram", subtitle: "@fx_asians", href: "https://www.instagram.com/fx_asians", thumb: "instagram" },
   { title: "Facebook", subtitle: "Community & updates", href: "https://www.facebook.com/share/1FG31rJR5R/", thumb: "facebook" },

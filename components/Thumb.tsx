@@ -1,27 +1,29 @@
 "use client";
-import { useImageFailed } from "./useImageFailed";
+import type { IconType } from "react-icons";
 import { FaInstagram, FaFacebookF, FaTiktok, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { FiTrendingUp } from "react-icons/fi";
+import { useImageFailed } from "./useImageFailed";
 import type { BrandKey, LinkItem } from "@/app/data";
 
-function Brand({ name }: { name?: BrandKey }) {
-  switch (name) {
-    case "signals":
-      return <span className="thumb thumb-gold"><FiTrendingUp /></span>;
-    case "exness":
-      return <span className="thumb thumb-text">ex</span>;
-    case "instagram":
-      return <span className="thumb"><FaInstagram /></span>;
-    case "facebook":
-      return <span className="thumb"><FaFacebookF /></span>;
-    case "tiktok":
-      return <span className="thumb"><FaTiktok /></span>;
-    case "youtube":
-      return <span className="thumb"><FaYoutube /></span>;
-    case "whatsapp":
-    default:
-      return <span className="thumb"><FaWhatsapp /></span>;
+const brandIcons: Record<Exclude<BrandKey, "exness">, IconType> = {
+  signals: FiTrendingUp,
+  instagram: FaInstagram,
+  facebook: FaFacebookF,
+  tiktok: FaTiktok,
+  youtube: FaYoutube,
+  whatsapp: FaWhatsapp,
+};
+
+function Brand({ name = "whatsapp" }: { name?: BrandKey }) {
+  if (name === "exness") {
+    return <span className="thumb thumb-exness">ex</span>;
   }
+  const Icon = brandIcons[name];
+  return (
+    <span className={`thumb thumb-${name}`}>
+      <Icon />
+    </span>
+  );
 }
 
 type ThumbProps = Pick<LinkItem, "thumb" | "fallback">;

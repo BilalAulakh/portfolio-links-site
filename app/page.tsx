@@ -13,6 +13,8 @@ import { FiArrowUpRight, FiMail, FiUserPlus } from "react-icons/fi";
 import { profile, socials, links, type SocialType } from "./data";
 import Avatar from "@/components/Avatar";
 import Thumb from "@/components/Thumb";
+import OutLink from "@/components/OutLink";
+import InAppNotice from "@/components/InAppNotice";
 
 const socialIcons: Record<SocialType, IconType> = {
   instagram: FaInstagram,
@@ -49,23 +51,20 @@ export default function Home() {
           {socials.map(({ type, href, label = type }) => {
             const Icon = socialIcons[type];
             return (
-              <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
+              <OutLink key={href} href={href} aria-label={label} title={label}>
                 <Icon />
-              </a>
+              </OutLink>
             );
           })}
         </nav>
+
+        <InAppNotice />
       </section>
 
       <ul className="links">
         {links.map((link, i) => (
           <li key={link.title} className="reveal" style={delay(i + 1)}>
-            <a
-              className={`link-card${link.featured ? " featured" : ""}`}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <OutLink className={`link-card${link.featured ? " featured" : ""}`} href={link.href}>
               <Thumb thumb={link.thumb} fallback={link.fallback} />
               <span className="link-text">
                 <span className="link-title">{link.title}</span>
@@ -74,7 +73,7 @@ export default function Home() {
               <span className="arrow" aria-hidden>
                 <FiArrowUpRight />
               </span>
-            </a>
+            </OutLink>
           </li>
         ))}
       </ul>

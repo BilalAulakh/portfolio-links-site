@@ -165,6 +165,17 @@ ul { list-style: none; }
   transform: translateY(-2px);
 }
 
+/* shown only inside TikTok's browser */
+.inapp-notice {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 /* ---------- link cards ---------- */
 .links {
   display: flex;

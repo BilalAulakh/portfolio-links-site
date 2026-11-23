@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { BLOCKED_LINK_EVENT, isTikTokBrowser } from "./inApp";
 
 function copyText(text: string): boolean {
@@ -24,7 +25,7 @@ function copyText(text: string): boolean {
   return ok;
 }
 
-/** Inside TikTok only: a tip under the icons, and a guide when a WhatsApp link is tapped. */
+/** Inside TikTok only: a tip under the icons, and a guide when a link is tapped. */
 export default function InAppNotice() {
   const [inTikTok, setInTikTok] = useState(false);
   const [blocked, setBlocked] = useState<string | null>(null);
@@ -45,20 +46,20 @@ export default function InAppNotice() {
   return (
     <>
       <p className="inapp-notice" role="note">
-        TikTok blocks WhatsApp links. Tap <strong>•••</strong> at the top right, then{" "}
+        TikTok blocks these links. Tap <strong>•••</strong> at the top right, then{" "}
         <strong>Open in browser</strong>.
       </p>
 
-      {blocked && (
+      {blocked && createPortal(
         <div className="inapp-sheet-backdrop" onClick={() => setBlocked(null)}>
           <div className="inapp-sheet" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
             <span className="inapp-arrow" aria-hidden>↗</span>
             <h2>Open in your browser</h2>
-            <p>TikTok doesn&apos;t allow WhatsApp links. To join:</p>
+            <p>TikTok doesn&apos;t allow this link. To open it:</p>
             <ol>
               <li>Tap <strong>•••</strong> at the top right of this screen</li>
               <li>Tap <strong>Open in browser</strong></li>
-              <li>Tap the WhatsApp link again</li>
+              <li>Tap the link again</li>
             </ol>
             <button
               className="inapp-btn"
@@ -70,7 +71,8 @@ export default function InAppNotice() {
               Close
             </button>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
